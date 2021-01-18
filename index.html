@@ -15,8 +15,14 @@
     </div>
   </div>
   <script>
+    var now = new Date();
+    // 秒を取得
+    var seconds = now.getSeconds();
+    if (seconds < 10) {
+      seconds = '0' + seconds
+    }
     // innerHTML: プロパティ
-    document.getElementById('timer').innerHTML = '00:00:01'; 
+    document.getElementById('timer').innerHTML = seconds; 
   </script>
 </body>
 </html>
