@@ -15,45 +15,29 @@
     </div>
   </div>
   <script>
-    // 0を追加する
-    var addZero = function(value) {
-      if (value < 10) {
-      value = '0' + value;
-      }
-      return value;
-    }
+    var start;
 
     // イベント作成
     document.getElementById('start_stop').addEventListener('click',
     function() {
+      start = new Date();
 
-      // インスタンス化
+      // intervalでプログラムを定期的に実行する
+      // ミリ秒(1/1000)で指定する
+      setInterval(goTimer, 10);
+    });
+
+    var goTimer = function() {
       var now = new Date();
 
-      // 秒を取得
-      var seconds = now.getSeconds();
-      // if (seconds < 10) {
-      //   seconds = '0' + seconds
-      // }
-      seconds = addZero(seconds);
+      var milli = now.getTime() - start.getTime();
+      // 小数点以下を切り捨て
+      var seconds = Math.floor(milli / 1000);
 
-      // 分を取得
-      var minutes = now.getMinutes();
-      // if (minutes < 10) {
-      //   minuites = '0' + minutes
-      // }
-      minutes = addZero(minutes);
-
-      // 時間を取得
-      var hours = now.getHours();
-      // if (hours < 10) {
-      //   hours = '0' + hours
-      // }
-      hours = addZero(hours);
-
-      // innerHTML: プロパティ
-      document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
-    });
+      // DateオブジェクトのgetTimeメソッドを呼び出し
+      // 1970/1/1 00:00:00からの経過秒数をカウントする
+      document.getElementById('timer').innerHTML = seconds;
+    };
   </script>
 </body>
 </html>

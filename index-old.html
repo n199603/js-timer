@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIMER</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <p id="timer">00:00:00</p>
+    <div>
+      <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+    </div>
+  </div>
+  <script>
+    // 0を追加する
+    var addZero = function(value) {
+      if (value < 10) {
+      value = '0' + value;
+      }
+      return value;
+    }
+
+    // イベント作成
+    document.getElementById('start_stop').addEventListener('click',
+    function() {
+
+      // インスタンス化
+      var now = new Date();
+
+      // 秒を取得
+      var seconds = now.getSeconds();
+      // if (seconds < 10) {
+      //   seconds = '0' + seconds
+      // }
+      seconds = addZero(seconds);
+
+      // 分を取得
+      var minutes = now.getMinutes();
+      // if (minutes < 10) {
+      //   minuites = '0' + minutes
+      // }
+      minutes = addZero(minutes);
+
+      // 時間を取得
+      var hours = now.getHours();
+      // if (hours < 10) {
+      //   hours = '0' + hours
+      // }
+      hours = addZero(hours);
+
+      // innerHTML: プロパティ
+      document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+    });
+  </script>
+</body>
+</html>
