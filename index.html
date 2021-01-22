@@ -16,22 +16,36 @@
   </div>
   <script>
     var start;
+    var timer_id;
 
     // イベント作成
     document.getElementById('start_stop').addEventListener('click',
     function() {
-      start = new Date();
+      // STARTの時
+      if (this.innerHTML === 'START') {
+        start = new Date();
 
-      // intervalでプログラムを定期的に実行する
-      // ミリ秒(1/1000)で指定する
-      setInterval(goTimer, 10);
+        // intervalでプログラムを定期的に実行する
+        // ミリ秒(1/1000)で指定する
+        timer_id = setInterval(goTimer, 10);
 
-      // STOPボタンにする
-      // thisはstart_stopのid属性を持つ要素を指す→document.getElementById('start_stop')のこと
-      this.innerHTML = 'STOP';
-      // クラス属性→HTMLのclass="btn btn-lg btn-primary"のこと
-      this.classList.remove('btn-primary');
-      this.classList.add('btn-danger');
+        // STOPボタンにする
+        // thisはstart_stopのid属性を持つ要素を指す→document.getElementById('start_stop')のこと
+        this.innerHTML = 'STOP';
+
+        // クラス属性→HTMLのclass="btn btn-lg btn-primary"のこと
+        this.classList.remove('btn-primary');
+        this.classList.add('btn-danger');
+      } else {
+        // タイマーを止める
+        // timer_id→setIntervalメソッドが与える戻り値
+        clearInterval(timer_id);
+
+        // STARTボタンにする
+        this.innerHTML = 'START';
+        this.classList.remove('btn-danger');
+        this.classList.add('btn-primary');
+      }
     });
 
     // 0を追加する
