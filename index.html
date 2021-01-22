@@ -25,6 +25,13 @@
       // intervalでプログラムを定期的に実行する
       // ミリ秒(1/1000)で指定する
       setInterval(goTimer, 10);
+
+      // STOPボタンにする
+      // thisはstart_stopのid属性を持つ要素を指す→document.getElementById('start_stop')のこと
+      this.innerHTML = 'STOP';
+      // クラス属性→HTMLのclass="btn btn-lg btn-primary"のこと
+      this.classList.remove('btn-primary');
+      this.classList.add('btn-danger');
     });
 
     // 0を追加する
