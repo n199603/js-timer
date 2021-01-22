@@ -1,4 +1,4 @@
-#JavaScriptタイマー
+# JavaScriptタイマー
 
 HTML, CSS, Bootstrap, JavaScript study
 
